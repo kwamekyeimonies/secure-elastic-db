@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AcceralytDevTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e032a393de0fdcb71c901f261fb221c219fbd0e5")]
 [assembly: System.Reflection.AssemblyProductAttribute("AcceralytDevTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AcceralytDevTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

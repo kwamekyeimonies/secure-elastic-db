@@ -1,0 +1,6 @@
+﻿services:
+  acceralytdevtest:
+    image: acceralytdevtest
+    build:
+      context: .
+      dockerfile: Dockerfile
