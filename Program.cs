@@ -4,8 +4,29 @@ using AcceralytDevTest.repository;
 using AcceralytDevTest.services;
 using AcceralytDevTest.utils;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var elasticsearchUri = builder.Configuration["Elasticsearch__Uri"];
+if (string.IsNullOrEmpty(elasticsearchUri))
+{
+    throw new InvalidOperationException("Elasticsearch URI not configured in appsettings.");
+}
+
+Log.Logger = new LoggerConfiguration()
+    .Enrich.FromLogContext()
+    .WriteTo.Elasticsearch(new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(new Uri(elasticsearchUri))
+    {
+        AutoRegisterTemplate = true,
+        IndexFormat = "logstash-{0:yyyy.MM.dd}"
+    })
+    .CreateLogger();
+
+builder.Services.AddLogging(loggingBuilder =>
+{
+    loggingBuilder.AddSerilog();
+});
 
 
 builder.Services.AddEndpointsApiExplorer();
